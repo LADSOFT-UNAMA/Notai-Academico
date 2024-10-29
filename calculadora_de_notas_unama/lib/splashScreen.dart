@@ -14,9 +14,9 @@ class _SplashScreenState extends State<SplashScreen> {
     // Usando addPostFrameCallback para garantir que temos um contexto com Navigator
     WidgetsBinding.instance.addPostFrameCallback((_) {
       Timer(
-        Duration(seconds: 5),
+        const Duration(seconds: 5),
         () => Navigator.of(context).pushReplacement(
-          MaterialPageRoute(builder: (_) => HomePage()),
+          MaterialPageRoute(builder: (_) => const HomePage()),
         ),
       );
     });
@@ -24,31 +24,40 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: telaCarregamento());
+    return const Scaffold(body: LoadingScreen());
   }
 }
 
-Widget telaCarregamento() {
-  return Container(
-    width: double.infinity,
-    color: const Color(0xff639976),
-    child: const Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Text('Notai',
+class LoadingScreen extends StatelessWidget {
+  const LoadingScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: double.infinity,
+      color: const Color(0xff639976),
+      child: const Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(
+            'Notai',
             textAlign: TextAlign.center,
-            style: TextStyle(color: Colors.white, fontSize: 50)),
-        SizedBox(height: 0),
-        Text('Academica',
+            style: TextStyle(color: Colors.white, fontSize: 50),
+          ),
+          SizedBox(height: 0),
+          Text(
+            'Academica',
             textAlign: TextAlign.center,
-            style: TextStyle(color: Colors.white, fontSize: 30)),
-        SizedBox(height: 0),
-        Image(image: AssetImage('image/Logo2.png')),
-        SizedBox(height: 30),
-        CircularProgressIndicator(
-          color: Colors.white,
-        ),
-      ],
-    ),
-  );
+            style: TextStyle(color: Colors.white, fontSize: 30),
+          ),
+          SizedBox(height: 0),
+          Image(image: AssetImage('image/Logo2.png')),
+          SizedBox(height: 30),
+          CircularProgressIndicator(
+            color: Colors.white,
+          ),
+        ],
+      ),
+    );
+  }
 }

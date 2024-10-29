@@ -26,137 +26,102 @@ class _SobrePageState extends State<SobrePage> {
   @override
   Widget build(BuildContext context) {
     double largura = MediaQuery.of(context).size.width;
-    double altura = MediaQuery.of(context).size.height;
 
     return SafeArea(
-        child: Scaffold(
-            body: Stack(
-      children: [
-        // =======================================
-        //      component Banner
-        topBar(largura),
-        // =======================================
-        //      component margem
-        // =======================================
-        Column(
+      child: Scaffold(
+        body: Stack(
           children: [
-            SizedBox(
-              height: 90,
-            ),
-            Expanded(
-              child: Container(
-                width: largura,
-                child: SingleChildScrollView(
-                  child: Column(children: [
-                    // =======================================
-                    //      component Banner
-                    bannerWidget(largura, AssetImage('image/bannerImage2.png')),
-                    // =======================================
-                    //      component margin
-                    const SizedBox(height: 10),
-                    // =======================================
-                    //      component entrada de texto
-
-                    // =======================================
-                    //        Margem
-                    const SizedBox(height: 10),
-                    // =======================================
-                    Text(
-                      "Sobre o projeto",
-                      style:
-                          TextStyle(fontSize: 30, fontWeight: FontWeight.w800),
+            // =======================================
+            //      component Banner
+            topBar(largura),
+            // =======================================
+            Column(
+              children: [
+                SizedBox(height: 90),
+                Expanded(
+                  child: Container(
+                    width: largura,
+                    child: SingleChildScrollView(
+                      child: Column(
+                        children: [
+                          // =======================================
+                          //      component Banner
+                          bannerWidget(largura, AssetImage('image/bannerImage2.png')),
+                          // =======================================
+                          const SizedBox(height: 10),
+                          // =======================================
+                          Text(
+                            "Sobre o Projeto",
+                            style: TextStyle(fontSize: 30, fontWeight: FontWeight.w800),
+                          ),
+                          Center(
+                            child: Container(
+                              width: 300,
+                              alignment: Alignment.topLeft,
+                              child: Column(
+                                children: [
+                                  Text(
+                                    "A Calculadora de Notas Acadêmicas UNAMA é uma ferramenta digital em desenvolvimento para facilitar o acompanhamento do desempenho e a gestão das notas. Esta plataforma visa oferecer uma solução integrada e intuitiva que permite calcular automaticamente as notas com base nos critérios de avaliação estabelecidos.",
+                                  ),
+                                  Text(
+                                    "\nEquipe de Desenvolvimento",
+                                    style: TextStyle(fontWeight: FontWeight.w800),
+                                  ),
+                                  Text(eqDesenvolvimento),
+                                  Text(
+                                    "\nEquipe de Design",
+                                    style: TextStyle(fontWeight: FontWeight.w800),
+                                  ),
+                                  Text(eqDesign),
+                                  Text(
+                                    "\nEquipe de Documentação",
+                                    style: TextStyle(fontWeight: FontWeight.w800),
+                                  ),
+                                  Text(eqDocumentacao),
+                                  Text(
+                                    "\nOrientador",
+                                    style: TextStyle(fontWeight: FontWeight.w800),
+                                  ),
+                                  Text("@Erminio Augusto Ramos da Paixão"),
+                                  SizedBox(height: 30),
+                                  Text(txt),
+                                ],
+                              ),
+                            ),
+                          ),
+                          // =======================================
+                          //  Margem
+                          const SizedBox(height: 40),
+                        ],
+                      ),
                     ),
-                    Center(
-                      child: Container(
-                          // color: Colors.green,
-                          width: 300,
-                          alignment: Alignment.topLeft,
-                          child: Column(
-                            children: [
-                              Text(
-                                  "A Calculadora de Notas Acadêmicas UNAMA é um projeto de ferramenta digital em desenvolvimento para facilitar o acompanhamento do desempenho dos membros e a gestão das notas. Esta plataforma visa oferecer uma solução integrada e intuitiva que permite calcular automaticamente as notas com base nos critérios de avaliação estabelecidos."),
-                              Text(
-                                "\nEquipe de desenvolvimento",
-                                style: TextStyle(fontWeight: FontWeight.w800),
-                              ),
-                              Text(eqdesenvolvimento),
-                              Text(
-                                "\nEquipe de design",
-                                style: TextStyle(fontWeight: FontWeight.w800),
-                              ),
-                              Text(eqdesign),
-                              Text(
-                                "\nEquipe de documentação",
-                                style: TextStyle(fontWeight: FontWeight.w800),
-                              ),
-                              Text(eqdocumentacao),
-                              Text(
-                                "\nOrientador",
-                                style: TextStyle(fontWeight: FontWeight.w800),
-                              ),
-                              Text("@Erminio Augusto Ramos da Paixao"),
-                              SizedBox(height: 30),
-                              Text(txt)
-                            ],
-                          )),
-                    ),
-                    // =======================================
-                    //      component button sobre o app
-                    // button(
-                    //     text: 'Acessar pagina do projeto',
-                    //     onTap: () {
-                    //       //
-                    //       abrirUrl(
-                    //           'https://github.com/ladsoftunama/App-Calculadora-de-Notas-Academicas-Unama');
-                    //     }),
-                    // =======================================
-                    //  margem
-                    SizedBox(height: 10),
-                    // =======================================
-                    //      component button sobre o app
-                    // button(
-                    //     text: 'privacy policy',
-                    //     onTap: () {
-                    //       //
-                    //       abrirUrl(
-                    //           "https://github.com/ladsoftunama/App-Calculadora-de-Notas-Academicas-Unama/blob/main/privacy%20policy.md");
-                    //     }),
-                    // =======================================
-                    //        Margem
-                    const SizedBox(height: 40),
-                    // =======================================
-                  ]),
+                  ),
                 ),
-              ),
-            )
+              ],
+            ),
           ],
         ),
-      ],
-    )));
+      ),
+    );
   }
 }
 
-// rengex validação de campo
+// Regex para validação de campo
 bool validate(String input) {
   const emailRegex = "^[0-9.]*\$";
-  if (RegExp(emailRegex).hasMatch(input)) {
-    return true;
-  } else {
-    return false;
-  }
+  return RegExp(emailRegex).hasMatch(input);
 }
 
-final txt = """
-\n
-acesse o codigo do projeto em :
+final String txt = """
+Acesse o código do projeto em:
 github.com/ladsoftunama/App-Calculadora-de-Notas-Academicas-Unama
 
-acesse as politicas de privacidade em :
+Acesse as políticas de privacidade em:
 github.com/ladsoftunama/App-Calculadora-de-Notas-Academicas-Unama/blob/main/privacy%20policy.md
 """;
 
-final eqdesenvolvimento = """
-@Marco antonio
+final String eqDesenvolvimento = """
+@Marco Antonio
 @Rellan Monteiro
 @Matheus Barbosa
 @Igor Alexsandro
@@ -164,22 +129,22 @@ final eqdesenvolvimento = """
 @Henrique Jeremias
 @Mateus Nunes
 @Thiago Tomé
-@José ribeiro
+@José Ribeiro
 @Yuri Afonso Costa
 """;
 
-final eqdesign = """
-@Marco antonio
+final String eqDesign = """
+@Marco Antonio
 @Iago Dantas
 @Pablo Henrique
-@João Emannueln
+@João Emmanuel
 @Jackeline Pereira
 """;
 
-final eqdocumentacao = """
-@Marco antonio
+final String eqDocumentacao = """
+@Marco Antonio
 @Diosne Marlon
 @Caique Costa
 @Carlos Victor
-@Maria Rodrigue
+@Maria Rodrigues
 """;
